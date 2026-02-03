@@ -1,0 +1,7 @@
+# In questo file sono presenti le dipendenze necessarie per eseguire il server
+
+fastapi                     # Framework per creare le API Rest
+pydantic                    # Gestione e validazioni dei modelli di dati
+kathara-framework           # Libreria core che permette a Python di definire topologie di rete e pilotare i container Docker
+uvicorn                     # Server ASGI ad alte prestazioni; è il motore che esegue l'app FastAPI e gestisce le connessioni
+requests                    # I client lo sfruttano per effettuare richieste HTTP verso il server
