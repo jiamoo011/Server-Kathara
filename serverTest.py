@@ -34,6 +34,11 @@ def test_new_machine_success():
     assert response.status_code == 200
     assert "pc1 created successfully" in response.json()["message"]
 
+def test_new_machine_missing_name():
+    client.post("/lab/create", json={"lab_name": "lab1"})
+    response = client.post("/lab/machine?lab_name=lab1", json={"name": None, "meta": {"ipv6": False}})
+    assert response.status_code == 422
+
 def test_new_machine_lab_not_found():
     response = client.post("/lab/machine?lab_name=ghost", json={"name": "pc1"})
     assert response.status_code == 404
@@ -123,22 +128,23 @@ def test_add_interface_success():
     assert response.status_code == 200
     assert response.json()["domain"] == "A"
 
+def test_add_interface_missing_machine():
+    client.post("/lab/create", json={"lab_name": "lab1"})
+    client.post("/lab/machine?lab_name=lab1", json={"name": "pc1"})
+    response = client.post("/lab/machine/interface?lab_name=lab1&machine_name=&domain=A")
+    assert response.status_code == 404
+
 @patch("Server.Kathara")
 def test_exec_success(mock_kathara):
     client.post("/lab/create", json={"lab_name": "lab1"})
     client.post("/lab/machine?lab_name=lab1", json={"name": "pc1"})
 
-    # Non serve chiamare /deploy reale, perché stiamo simulando.
-    # Ma se la logica del tuo server lo richiede per qualche flag interno, 
-    # puoi chiamarlo (tanto è tutto mockato se usi patch anche lì o se il server non controlla lo stato live).
     # Diciamo a Kathara: "Quando ti viene chiesto di fare .exec(), restituisci questi byte"
     mock_instance = mock_kathara.get_instance.return_value
     mock_instance.exec.return_value = [b"bin\n", b"boot\n", b"dev\n"]
 
     payload = {"machine_name": "pc1", "command": "ls"}
     response = client.post("/lab/exec?lab_name=lab1", json=payload)
-
-    # 4. Verifiche
     assert response.status_code == 200
     # Verifica che l'output simulato sia presente nella risposta JSON
     assert "bin" in response.json()["output"]
