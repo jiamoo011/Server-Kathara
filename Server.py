@@ -9,11 +9,11 @@ app = FastAPI()
 labs_storage : Dict[str, Lab] = {}
 
 class MachineRequest(BaseModel):
-    name: Optional[str] = None
+    name: str = None
     meta: Dict[str,Any] = {}
 
 class LabDeployRequest(BaseModel):
-    lab_name: Optional[str] = None
+    lab_name: str = None
     machines: Optional[List[MachineRequest]] = []
 
 class ExeCommandRequest(BaseModel):
@@ -82,8 +82,9 @@ def new_machine(lab_name: str, rm: MachineRequest):
         machine=lab.new_machine(rm.name, **rm.meta)
 
         return{"message": f"{machine.name} created successfully in {lab_name}"} 
-    
-    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
+        
+    except Exception as e : raise HTTPException(status_code = 422, detail = str(e))
+    except Exception as e : raise HTTPException(status_code = 500, detail = str(e))
     
 @app.post("/lab/machine/startup")
 def default_startup_file(lab_name: str, req: MachineStartupRequest):
@@ -178,7 +179,8 @@ def add_interface_to_machine(lab_name: str, machine_name: str, domain: str):
         machine = lab.machines[machine_name]
         lab.connect_machine_to_link(machine.name, domain)
         return {"message": f"Interface added to {machine_name}", "domain": domain}
-    
+        
+    except Exception as e: raise HTTPException(status_code = 422, detail = str(e))
     except Exception as e: raise HTTPException(status_code = 500, detail = str(e))
 
 @app.post("/lab/exec")
