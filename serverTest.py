@@ -131,13 +131,10 @@ def test_exec_success(mock_kathara):
     # Non serve chiamare /deploy reale, perché stiamo simulando.
     # Ma se la logica del tuo server lo richiede per qualche flag interno, 
     # puoi chiamarlo (tanto è tutto mockato se usi patch anche lì o se il server non controlla lo stato live).
-    
-    # 2. Configurazione del Mock
     # Diciamo a Kathara: "Quando ti viene chiesto di fare .exec(), restituisci questi byte"
     mock_instance = mock_kathara.get_instance.return_value
-    mock_instance.exec.return_value = [b"bin\n", b"boot\n", b"dev\n"] # Simula l'output di 'ls'
+    mock_instance.exec.return_value = [b"bin\n", b"boot\n", b"dev\n"]
 
-    # 3. Esecuzione della chiamata
     payload = {"machine_name": "pc1", "command": "ls"}
     response = client.post("/lab/exec?lab_name=lab1", json=payload)
 
