@@ -53,7 +53,8 @@ def deploy_lab(lab_name: str):
     lab = None
     
     if lab_name not in labs_storage: raise HTTPException(status_code = 404, detail = f"{lab_name} not found")
-    
+    else: lab = labs_storage[lab_name]
+        
     try: 
         Kathara.get_instance().deploy_lab(lab) 
         return {"message": f"{lab_name} deployed successfully"}
