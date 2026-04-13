@@ -9,11 +9,11 @@ app = FastAPI()
 labs_storage : Dict[str, Lab] = {}
 
 class MachineRequest(BaseModel):
-    name: Optional[str] = None
+    name: str = None
     meta: Dict[str,Any] = {}
 
 class LabDeployRequest(BaseModel):
-    lab_name: Optional[str] = None
+    lab_name: str = None
     machines: Optional[List[MachineRequest]] = []
 
 class ExeCommandRequest(BaseModel):
@@ -26,15 +26,14 @@ class MachineStartupRequest(BaseModel):
     startup_file : Optional[str] = None 
 
 class FileConfig(BaseModel):
-    src : Optional[str]
+    src : Optional[str] = None
     path : str
-    content : Optional[str]
+    content : Optional[str] = None
 
 class CreateFileRequest(BaseModel):
     machine_name : str
     files : Optional[List[FileConfig]] = []
     commands : Optional[str] = None
-
 
 @app.post("/lab/create")
 def create_lab(request : LabDeployRequest):
@@ -53,7 +52,7 @@ def deploy_lab(lab_name: str):
     lab = None
     
     if lab_name not in labs_storage: raise HTTPException(status_code = 404, detail = f"{lab_name} not found")
-    
+    else: lab = labs_storage[lab_name]
     try: 
         Kathara.get_instance().deploy_lab(lab) 
         return {"message": f"{lab_name} deployed successfully"}
@@ -81,9 +80,10 @@ def new_machine(lab_name: str, rm: MachineRequest):
     try:
         machine=lab.new_machine(rm.name, **rm.meta)
 
-        return{"message": f"{machine.name} created successfully in {lab_name}"} 
+        return{"message": f"{machine.name} created successfully in {lab_name}"}
     
-    except Exception as e: raise HTTPException(status_code=500, detail=str(e))
+    except Exception as e : raise HTTPException(status_code = 422, detail = str(e))
+    except Exception as e : raise HTTPException(status_code = 500, detail=str(e))
     
 @app.post("/lab/machine/startup")
 def default_startup_file(lab_name: str, req: MachineStartupRequest):
@@ -110,7 +110,6 @@ def default_startup_file(lab_name: str, req: MachineStartupRequest):
     
     except Exception as e: raise HTTPException(status_code=422, detail=str(e))
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
-
 
 @app.post("/lab/machine/file/string")
 def device_file_from_string(lab_name: str, fil: CreateFileRequest):
@@ -179,6 +178,7 @@ def add_interface_to_machine(lab_name: str, machine_name: str, domain: str):
         lab.connect_machine_to_link(machine.name, domain)
         return {"message": f"Interface added to {machine_name}", "domain": domain}
     
+    except Exception as e: raise HTTPException(status_code = 422, detail = str(e))
     except Exception as e: raise HTTPException(status_code = 500, detail = str(e))
 
 @app.post("/lab/exec")

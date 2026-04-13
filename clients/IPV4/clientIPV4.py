@@ -72,7 +72,7 @@ url_create_lab = f"{url}/lab/create"
 payload_lab = {"lab_name": lab_name}
 
 try: 
-    requests.post(url_create_lab, json=payload_lab)
+    requests.post(url_create_lab, json = payload_lab)
     
 except Exception as e: print(f"Error: {e}")
 

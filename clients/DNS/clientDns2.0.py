@@ -88,7 +88,7 @@ resolver_configs = [
         "machine_name": "pc1",
         "files": [
             {
-                "src": "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/pc1/etc/resolv.conf",
+                "src": "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/pc1/etc/resolv.conf",
                 "path": "/etc/resolv.conf"
             }
         ]
@@ -97,7 +97,7 @@ resolver_configs = [
         "machine_name": "pc2",
         "files" : [
             {
-                "src": "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/pc2/etc/resolv.conf",
+                "src": "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/pc2/etc/resolv.conf",
                 "path": "/etc/resolv.conf"
             }
         ]
@@ -109,19 +109,19 @@ dns_config = [
         "machine_name" : "dnsit",
         "files": [
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsit/etc/bind/db.it",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsit/etc/bind/db.it",
                 "path" : "/etc/bind/db.it"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsit/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsit/etc/bind/db.root",
                 "path": "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsit/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsit/etc/bind/named.conf",
                 "path" : "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsit/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsit/etc/bind/named.conf.options",
                 "path": "/etc/bind/named.conf.options"
             }         
         ]
@@ -130,19 +130,19 @@ dns_config = [
         "machine_name": "dnsnet",
         "files":[
             {
-                "src": "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsnet/etc/bind/db.net",
+                "src": "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsnet/etc/bind/db.net",
                 "path": "/etc/bind/db.net"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsnet/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsnet/etc/bind/db.root",
                 "path": "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsnet/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsnet/etc/bind/named.conf",
                 "path": "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsnet/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsnet/etc/bind/named.conf.options",
                 "path" : "/etc/bind/named.conf.options"
             }
         ]
@@ -151,15 +151,15 @@ dns_config = [
         "machine_name":"dnsroot",
         "files": [
             {
-                "src": "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsroot/etc/bind/db.root",
+                "src": "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsroot/etc/bind/db.root",
                 "path": "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsroot/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsroot/etc/bind/named.conf",
                 "path" : "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsroot/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsroot/etc/bind/named.conf.options",
                 "path" : "/etc/bind/named.conf.options"
             }
         ]
@@ -168,19 +168,19 @@ dns_config = [
         "machine_name": "dnsstart",
         "files":[
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsstart/etc/bind/db.net.startup",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsstart/etc/bind/db.net.startup",
                 "path": "/etc/bind/db.net.startup" 
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsstart/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsstart/etc/bind/db.root",
                 "path" : "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsstart/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsstart/etc/bind/named.conf",
                 "path" : "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsstart/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsstart/etc/bind/named.conf.options",
                 "path" : "/etc/bind/named.conf.options"
             }
         ]
@@ -189,19 +189,19 @@ dns_config = [
         "machine_name" :"dnsuni",
         "files":[
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsuni/etc/bind/db.it.uniroma3",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsuni/etc/bind/db.it.uniroma3",
                 "path" : "/etc/bind/db.it.uniroma3"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsuni/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsuni/etc/bind/db.root",
                 "path" : "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsuni/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsuni/etc/bind/named.conf",
                 "path" : "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/dnsuni/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/dnsuni/etc/bind/named.conf.options",
                 "path": "/etc/bind/named.conf.options"
             }
         ]
@@ -210,15 +210,15 @@ dns_config = [
         "machine_name" : "localstart",
         "files" : [
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localstart/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localstart/etc/bind/db.root",
                 "path" : "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localstart/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localstart/etc/bind/named.conf",
                 "path": "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localstart/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localstart/etc/bind/named.conf.options",
                 "path" : "/etc/bind/named.conf.options"
             }
         ]
@@ -227,15 +227,15 @@ dns_config = [
         "machine_name" : "localuni",
         "files":[
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localuni/etc/bind/db.root",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localuni/etc/bind/db.root",
                 "path" : "/etc/bind/db.root"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localuni/etc/bind/named.conf",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localuni/etc/bind/named.conf",
                 "path" : "/etc/bind/named.conf"
             },
             {
-                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/srcDNS/localuni/etc/bind/named.conf.options",
+                "src" : "C:/Users/giamm/Documents/Università/Tirocinio/Server/srcDNS/localuni/etc/bind/named.conf.options",
                 "path" : "/etc/bind/named.conf.options"
             }
         ]
