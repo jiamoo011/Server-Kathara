@@ -138,11 +138,6 @@ def test_add_interface_missing_machine():
 def test_exec_success(mock_kathara):
     client.post("/lab/create", json={"lab_name": "lab1"})
     client.post("/lab/machine?lab_name=lab1", json={"name": "pc1"})
-
-    # Non serve chiamare /deploy reale, perché stiamo simulando.
-    # Ma se la logica del tuo server lo richiede per qualche flag interno, 
-    # puoi chiamarlo (tanto è tutto mockato se usi patch anche lì o se il server non controlla lo stato live).
-    
     # 2. Configurazione del Mock
     # Diciamo a Kathara: "Quando ti viene chiesto di fare .exec(), restituisci questi byte"
     mock_instance = mock_kathara.get_instance.return_value
