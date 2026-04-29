@@ -48,6 +48,7 @@ The project follows a clear separation between management logic (Server) and top
         ├── clientIPV4.py             # Defines machines, configures domains and IP addresses
         ├── clientDeployIPV4.py       # Quick Python script for IPV4 lab deployment
         └── clientUndeployIPV4.py      # Quick Python script for IPV4 lab undeployment
+```
 
 To view all available endpoints without having to write scripts, you can access **http://127.0.0.1:5000/docs** via browser. It is a debugging REST Client that can verify that the APIs are responding correctly. From every created endpoint, clicking on "Try it out" allows you to execute the request.
 
