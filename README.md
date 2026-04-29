@@ -27,8 +27,9 @@ The system is divided into two logical components:
 
 ## Project structure: 
 
-The project follows a clear separation between management logic (Server) and topology definition (Clients).
+The project follows a clear separation between management logic (Server) and topology definition (Examples).
 
+```text
 ├── Server.py                         # [Backend] FastAPI Server API & Kathara Logic written in Python
 ├── requirements.txt                  # Python dependencies needed to use the server
 ├── README.md                         # Project documentation
