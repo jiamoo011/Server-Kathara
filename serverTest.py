@@ -139,18 +139,16 @@ def test_exec_success(mock_kathara):
     client.post("/lab/create", json={"lab_name": "lab1"})
     client.post("/lab/machine?lab_name=lab1", json={"name": "pc1"})
 
-    # 2. Configurazione del Mock
-    # Diciamo a Kathara: "Quando ti viene chiesto di fare .exec(), restituisci questi byte"
+
     mock_instance = mock_kathara.get_instance.return_value
     mock_instance.exec.return_value = [b"bin\n", b"boot\n", b"dev\n"]
 
-    # 3. Esecuzione della chiamata
+
     payload = {"machine_name": "pc1", "command": "ls"}
     response = client.post("/lab/exec?lab_name=lab1", json=payload)
 
-    # 4. Verifiche
     assert response.status_code == 200
-    # Verifica che l'output simulato sia presente nella risposta JSON
+
     assert "bin" in response.json()["output"]
 
 def test_exec_machine_not_found():
