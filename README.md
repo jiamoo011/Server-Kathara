@@ -90,3 +90,5 @@ A lab_name string is sent to the endpoint to select the lab. The presence of the
 To return the list of existing labs, I extract the labs_storage keys via the method: list(labs_storage.keys())
 
 The serverTest file presents 16 different test. You can run it with this command in the prompt : **pytest -s -v serverTest.py**.
+
+In each folder inside "examples" there is a file batch, which can verify if the server is running and if each of the python file is working properly. You can run this file by typing .\(namefile.bat)
