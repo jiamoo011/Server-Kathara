@@ -37,17 +37,19 @@ The project follows a clear separation between management logic (Server) and top
 │   ├── serverTest.py                 # Script in which every endpoint is tested, and every result is showed
 └── examples                   
     ├── DNS
-    │   ├── srcDNS                   # Directory containing source files for DNS configuration
+    │   ├── srcDNS                    # Directory containing source files for DNS configuration
     │   ├── clientDns.py              # Defines DNS network topology and configurations 
     │   │                               (it uses machine.create_file_from_string)
     │   ├── clientDns2.0.py           # Defines the same DNS network topology version
     │   │                               (it uses machine.create_file_from_string)
     │   ├── clientDeployDns.py        # Quick Python script for DNS lab deployment
-    │   └── clientUndeployDns.py      # Quick Python script for DNS lab undeployment
+    │   ├── clientUndeployDns.py      # Quick Python script for DNS lab undeployment
+    │   └── batchDNS                  # Script that verifies if the files are running properly
     └── IPV4
         ├── clientIPV4.py             # Defines machines, configures domains and IP addresses
         ├── clientDeployIPV4.py       # Quick Python script for IPV4 lab deployment
-        └── clientUndeployIPV4.py      # Quick Python script for IPV4 lab undeployment
+        ├── clientUndeployIPV4.py     # Quick Python script for IPV4 lab undeployment
+        └── batchIPV4                 # Script that verifies if the files are running properly
 ```
 
 To view all available endpoints without having to write scripts, you can access **http://127.0.0.1:5000/docs** via browser. It is a debugging REST Client that can verify that the APIs are responding correctly. From every created endpoint, clicking on "Try it out" allows you to execute the request.
