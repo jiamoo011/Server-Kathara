@@ -1,24 +1,24 @@
 @echo off
 echo =========================================
-echo Avvio della creazione e del deploy del lab...
+echo Starting lab creation and deployment...
 echo =========================================
 python clientIPV4.py
 
 if %ERRORLEVEL% NEQ 0 (
-    echo Si e' verificato un errore durante la creazione del lab. Interruzione.
+    echo An error occurred during lab creation. Aborting.
     exit /b %ERRORLEVEL%
 )
 
 echo.
-echo Deploy completato con successo!
+echo Deployment completed successfully!
 echo.
 
-echo Premi un tasto quando sei pronto per eseguire l'undeploy del lab...
+echo Press any key when you are ready to undeploy the lab...
 pause >nul
 
 echo =========================================
-echo Avvio dell'undeploy del lab...
+echo Starting lab undeploy...
 echo =========================================
 python clientUndeployIPV4.py
 
-echo Operazione completata.
+echo Operation completed.
