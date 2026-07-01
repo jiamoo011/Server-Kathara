@@ -125,10 +125,8 @@ startup =  [
 
 named_base = 'options { directory "/var/cache/bind"; allow-query { any; }; allow-recursion { any; }; dnssec-validation no; };\n'
 
-# 2. File root hints con i TTL corretti
 db_root_hints = ". 3600000 IN NS dnsroot.\ndnsroot. 3600000 IN A 192.168.0.5\ndnsroot. 3600000 IN AAAA fd00:0::5\n"
 
-# 3. Parametri SOA standard per evitare crash di sintassi in Bind9
 soa_std = "1 604800 86400 2419200 604800"
 
 dns_config = [
