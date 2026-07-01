@@ -72,16 +72,6 @@ startup =  [
         ] 
     },
     {
-        "machine_name": "dnsuni",
-        "commands":[
-            "ip address add 192.168.1.11/24 dev eth0",
-            "ip -6 address add fd00:1::11/64 dev eth0",
-            "ip route add default via 192.168.1.254",
-            "ip -6 route add default via fd00:1::254",
-            "systemctl start bind9"
-        ] 
-    }, 
-    {
         "machine_name": "localstart",
         "commands":[
             "ip address add 192.168.2.220/24 dev eth0",
@@ -91,6 +81,16 @@ startup =  [
             "systemctl start bind9"
         ] 
     },
+        {
+        "machine_name": "dnsuni",
+        "commands":[
+            "ip address add 192.168.1.11/24 dev eth0",
+            "ip -6 address add fd00:1::11/64 dev eth0",
+            "ip route add default via 192.168.1.254",
+            "ip -6 route add default via fd00:1::254",
+            "systemctl start bind9"
+        ] 
+    }, 
     {
         "machine_name": "dnsstart",
         "commands":[
