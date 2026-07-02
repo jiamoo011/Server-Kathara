@@ -132,59 +132,88 @@ soa_std = "1 604800 86400 2419200 604800"
 dns_config = [
     {
         "machine_name": "pc1",
-        "files": [{"path": "/etc/resolv.conf", "content": "nameserver 192.168.1.110\nnameserver fd00:1::110\nsearch uniroma3.it"}]
+        "files": [
+            {"path": "/etc/resolv.conf", 
+             "content": "nameserver 192.168.1.110\nnameserver fd00:1::110\nsearch uniroma3.it"
+            }
+        ]
     },
     {
         "machine_name": "pc2",
-        "files": [{"path": "/etc/resolv.conf", "content": "nameserver 192.168.2.220\nnameserver fd00:2::220\nsearch startup.net"}]
+        "files": [
+            {"path": "/etc/resolv.conf", 
+             "content": "nameserver 192.168.2.220\nnameserver fd00:2::220\nsearch startup.net"
+            }
+        ]
     },
     {
         "machine_name": "dnsroot",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "." { type master; file "/etc/bind/db.root_zone"; };'},
-            {"path": "/etc/bind/db.root_zone", "content": f"$TTL 60000\n@ IN SOA dnsroot. root.dnsroot. ({soa_std})\n@ IN NS dnsroot.\ndnsroot. IN A 192.168.0.5\ndnsroot. IN AAAA fd00:0::5\nit. IN NS dnsit.it.\ndnsit.it. IN A 192.168.0.1\ndnsit.it. IN AAAA fd00:0::1\nnet. IN NS dnsnet.net.\ndnsnet.net. IN A 192.168.0.2\ndnsnet.net. IN AAAA fd00:0::2\n"}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "." { type master; file "/etc/bind/db.root_zone"; };'},
+
+            {"path": "/etc/bind/db.root_zone", 
+             "content": f"$TTL 60000\n@ IN SOA dnsroot. root.dnsroot. ({soa_std})\n@ IN NS dnsroot.\ndnsroot. IN A 192.168.0.5\ndnsroot. IN AAAA fd00:0::5\nit. IN NS dnsit.it.\ndnsit.it. IN A 192.168.0.1\ndnsit.it. IN AAAA fd00:0::1\nnet. IN NS dnsnet.net.\ndnsnet.net. IN A 192.168.0.2\ndnsnet.net. IN AAAA fd00:0::2\n"}
         ]
     },
     {
         "machine_name": "dnsit",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "it" { type master; file "/etc/bind/db.it"; };'},
-            {"path": "/etc/bind/db.it", "content": f"$TTL 60000\n@ IN SOA dnsit.it. root.dnsit.it. ({soa_std})\n@ IN NS dnsit.it.\ndnsit.it. IN A 192.168.0.1\ndnsit.it. IN AAAA fd00:0::1\nuniroma3.it. IN NS dnsuni.uniroma3.it.\ndnsuni.uniroma3.it. IN A 192.168.1.11\ndnsuni.uniroma3.it. IN AAAA fd00:1::11\n"}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "it" { type master; file "/etc/bind/db.it"; };'},
+
+            {"path": "/etc/bind/db.it", 
+             "content": f"$TTL 60000\n@ IN SOA dnsit.it. root.dnsit.it. ({soa_std})\n@ IN NS dnsit.it.\ndnsit.it. IN A 192.168.0.1\ndnsit.it. IN AAAA fd00:0::1\nuniroma3.it. IN NS dnsuni.uniroma3.it.\ndnsuni.uniroma3.it. IN A 192.168.1.11\ndnsuni.uniroma3.it. IN AAAA fd00:1::11\n"}
         ]
     },
     {
         "machine_name": "dnsnet",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "net" { type master; file "/etc/bind/db.net"; };'},
-            {"path": "/etc/bind/db.net", "content": f"$TTL 60000\n@ IN SOA dnsnet.net. root.dnsnet.net. ({soa_std})\n@ IN NS dnsnet.net.\ndnsnet.net. IN A 192.168.0.2\ndnsnet.net. IN AAAA fd00:0::2\nstartup.net. IN NS dnsstart.startup.net.\ndnsstart.startup.net. IN A 192.168.2.22\ndnsstart.startup.net. IN AAAA fd00:2::22\n"}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "net" { type master; file "/etc/bind/db.net"; };'},+
+
+            {"path": "/etc/bind/db.net", 
+             "content": f"$TTL 60000\n@ IN SOA dnsnet.net. root.dnsnet.net. ({soa_std})\n@ IN NS dnsnet.net.\ndnsnet.net. IN A 192.168.0.2\ndnsnet.net. IN AAAA fd00:0::2\nstartup.net. IN NS dnsstart.startup.net.\ndnsstart.startup.net. IN A 192.168.2.22\ndnsstart.startup.net. IN AAAA fd00:2::22\n"}
         ]
     },
     {
         "machine_name": "dnsuni",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "uniroma3.it" { type master; file "/etc/bind/db.it.uniroma3"; };'},
-            {"path": "/etc/bind/db.it.uniroma3", "content": f"$TTL 60000\n@ IN SOA dnsuni.uniroma3.it. root.dnsuni.uniroma3.it. ({soa_std})\n@ IN NS dnsuni.uniroma3.it.\ndnsuni.uniroma3.it. IN A 192.168.1.11\ndnsuni.uniroma3.it. IN AAAA fd00:1::11\npc1.uniroma3.it. IN A 192.168.1.111\npc1.uniroma3.it. IN AAAA fd00:1::111\n"}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "uniroma3.it" { type master; file "/etc/bind/db.it.uniroma3"; };'},
+
+            {"path": "/etc/bind/db.it.uniroma3", 
+             "content": f"$TTL 60000\n@ IN SOA dnsuni.uniroma3.it. root.dnsuni.uniroma3.it. ({soa_std})\n@ IN NS dnsuni.uniroma3.it.\ndnsuni.uniroma3.it. IN A 192.168.1.11\ndnsuni.uniroma3.it. IN AAAA fd00:1::11\npc1.uniroma3.it. IN A 192.168.1.111\npc1.uniroma3.it. IN AAAA fd00:1::111\n"}
         ]
     },
     {
         "machine_name": "dnsstart",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "startup.net" { type master; file "/etc/bind/db.net.startup"; };'},
-            {"path": "/etc/bind/db.net.startup", "content": f"$TTL 60000\n@ IN SOA dnsstart.startup.net. root.dnsstart.startup.net. ({soa_std})\n@ IN NS dnsstart.startup.net.\ndnsstart.startup.net. IN A 192.168.2.22\ndnsstart.startup.net. IN AAAA fd00:2::22\npc2.startup.net. IN A 192.168.2.222\npc2.startup.net. IN AAAA fd00:2::222\n"}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "startup.net" { type master; file "/etc/bind/db.net.startup"; };'},
+
+            {"path": "/etc/bind/db.net.startup", 
+             "content": f"$TTL 60000\n@ IN SOA dnsstart.startup.net. root.dnsstart.startup.net. ({soa_std})\n@ IN NS dnsstart.startup.net.\ndnsstart.startup.net. IN A 192.168.2.22\ndnsstart.startup.net. IN AAAA fd00:2::22\npc2.startup.net. IN A 192.168.2.222\npc2.startup.net. IN AAAA fd00:2::222\n"}
         ]
     },
     {
         "machine_name": "localuni",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "." { type hint; file "/etc/bind/db.root"; };'},
-            {"path": "/etc/bind/db.root", "content": db_root_hints}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "." { type hint; file "/etc/bind/db.root"; };'},
+
+            {"path": "/etc/bind/db.root", 
+             "content": db_root_hints}
         ]
     },
     {
         "machine_name": "localstart",
         "files": [
-            {"path": "/etc/bind/named.conf", "content": named_base + 'zone "." { type hint; file "/etc/bind/db.root"; };'},
-            {"path": "/etc/bind/db.root", "content": db_root_hints}
+            {"path": "/etc/bind/named.conf", 
+             "content": named_base + 'zone "." { type hint; file "/etc/bind/db.root"; };'},
+             
+            {"path": "/etc/bind/db.root", 
+             "content": db_root_hints}
         ]
     }
 ]
