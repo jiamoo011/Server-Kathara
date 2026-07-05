@@ -56,7 +56,7 @@ def deploy_lab(lab_name: str):
     try: 
         Kathara.get_instance().deploy_lab(lab) 
         return {"message": f"{lab_name} deployed successfully"}
-    
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/lab/undeploy")
@@ -67,7 +67,7 @@ def undeploy_lab(lab_name: str):
     try:
         Kathara.get_instance().undeploy_lab(lab_name = lab_name) 
         return {"message": f"{lab_name} undeployed successfully"}
-
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/lab/machine")
@@ -107,7 +107,7 @@ def default_startup_file(lab_name: str, req: MachineStartupRequest):
             "filename created:": req.startup_file,
             "configuration:": req.commands
         }
-    
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code=422, detail=str(e))
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
 
@@ -132,7 +132,7 @@ def device_file_from_string(lab_name: str, fil: CreateFileRequest):
             "message": f"Configuration applied to {fil.machine_name}",
             "files created at this source": processed_files
         }
-
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code = 422, detail = str(e))
     except Exception as e: raise HTTPException(status_code = 500, detail = str(e))
 
@@ -159,7 +159,7 @@ def device_file_from_path(lab_name : str , fil : CreateFileRequest):
 
         return {"message": f"Configuration applied to {fil.machine_name}","files_processed": processed_files}
     
-    except HTTPException as e: raise e
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code = 422, detail = str(e))
     except Exception as e: raise HTTPException(status_code = 500, detail = str(e))
 
@@ -177,7 +177,7 @@ def add_interface_to_machine(lab_name: str, machine_name: str, domain: str):
         machine = lab.machines[machine_name]
         lab.connect_machine_to_link(machine.name, domain)
         return {"message": f"Interface added to {machine_name}", "domain": domain}
-    
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code = 422, detail = str(e))
     except Exception as e: raise HTTPException(status_code = 500, detail = str(e))
 
@@ -208,7 +208,7 @@ def exec_command(lab_name: str, er: ExeCommandRequest):
         return {
             "machine": machine.name, "command": er.command, "output": full_output
         }
-    
+    except Exception as e: raise HTTPException(status_code=404, detail=str(e))
     except Exception as e: raise HTTPException(status_code=500, detail=str(e))
     
 @app.get("/lab/machine")
