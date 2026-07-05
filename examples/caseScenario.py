@@ -170,7 +170,7 @@ dns_config = [
         "machine_name": "dnsnet",
         "files": [
             {"path": "/etc/bind/named.conf", 
-             "content": named_base + 'zone "net" { type master; file "/etc/bind/db.net"; };'},+
+             "content": named_base + 'zone "net" { type master; file "/etc/bind/db.net"; };'},
 
             {"path": "/etc/bind/db.net", 
              "content": f"$TTL 60000\n@ IN SOA dnsnet.net. root.dnsnet.net. ({soa_std})\n@ IN NS dnsnet.net.\ndnsnet.net. IN A 192.168.0.2\ndnsnet.net. IN AAAA fd00:0::2\nstartup.net. IN NS dnsstart.startup.net.\ndnsstart.startup.net. IN A 192.168.2.22\ndnsstart.startup.net. IN AAAA fd00:2::22\n"}
